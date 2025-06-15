@@ -1,0 +1,47 @@
+
+INSERT INTO tipo_nao_conformidade (descricao) VALUES
+('Costura torta'),
+('Tecido manchado'),
+('Etiqueta incorreta'),
+('Acabamento mal feito');
+
+
+INSERT INTO status_rnc (descricao) VALUES
+('Aberta'),
+('Em análise'),
+('Resolvida'),
+('Cancelada');
+
+
+INSERT INTO setor (nome, responsavel) VALUES
+('Costura', 'Maria Ferreira'),
+('Corte', 'João Souza'),
+('Embalagem', 'Ana Lima');
+
+
+INSERT INTO colaborador (nome, matricula, cargo) VALUES
+('Carlos Silva', 'M123', 'Inspetor'),
+('Fernanda Costa', 'M124', 'Supervisora'),
+('João Mendes', 'M125', 'Auxiliar');
+
+
+INSERT INTO cliente (nome, cnpj, email, telefone) VALUES
+('Confecção Brasil Ltda', '12.345.678/0001-90', 'contato@confbrasil.com', '(11) 99999-9999'),
+('Modas RJ', '98.765.432/0001-12', 'sac@modasrj.com', '(21) 88888-8888');
+
+
+INSERT INTO produto (nome, codigo_referencia, descricao) VALUES
+('Camisa Polo', 'CP-001', 'Camisa polo de algodão masculina'),
+('Calça Jeans', 'CJ-002', 'Calça jeans feminina'),
+('Vestido Floral', 'VF-003', 'Vestido estampado de verão');
+
+
+INSERT INTO rnc (data_abertura, descricao, id_produto, id_setor, id_colaborador, id_tipo_nc, id_status, id_cliente) VALUES
+('2025-06-01', 'Costura torta no ombro esquerdo', 1, 1, 1, 1, 1, 1),
+('2025-06-02', 'Tecido manchado na parte frontal', 2, 2, 2, 2, 2, 2),
+('2025-06-03', 'Etiqueta de composição errada', 3, 3, 3, 3, 1, 1);
+
+
+INSERT INTO acao_corretiva (id_rnc, descricao, data_execucao, responsavel) VALUES
+(1, 'Refeito o acabamento da costura', '2025-06-05', 'Carlos Silva'),
+(2, 'Produto refeito com novo tecido', '2025-06-06', 'Fernanda Costa');

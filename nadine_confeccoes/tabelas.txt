@@ -1,0 +1,71 @@
+
+CREATE TABLE cliente (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100),
+    cnpj VARCHAR(20),
+    email VARCHAR(100),
+    telefone VARCHAR(20)
+);
+
+
+
+CREATE TABLE status_rnc (
+    id SERIAL PRIMARY KEY,
+    descricao VARCHAR(50)
+);
+
+
+
+CREATE TABLE tipo_nao_conformidade (
+    id SERIAL PRIMARY KEY,
+    descricao VARCHAR(100)
+);
+
+
+
+CREATE TABLE setor (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100),
+    responsavel VARCHAR(100)
+);
+
+
+
+CREATE TABLE colaborador (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100),
+    matricula VARCHAR(20),
+    cargo VARCHAR(50)
+);
+
+
+
+CREATE TABLE produto (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100),
+    codigo_referencia VARCHAR(50),
+    descricao TEXT
+);
+
+
+
+CREATE TABLE rnc (
+    id SERIAL PRIMARY KEY,
+    data_abertura DATE,
+    descricao TEXT,
+    id_produto INT REFERENCES produto(id),
+    id_setor INT REFERENCES setor(id),
+    id_colaborador INT REFERENCES colaborador(id),
+    id_tipo_nc INT REFERENCES tipo_nao_conformidade(id),
+    id_status INT REFERENCES status_rnc(id),
+    id_cliente INT REFERENCES cliente(id)
+);
+
+
+CREATE TABLE acao_corretiva (
+    id SERIAL PRIMARY KEY,
+    id_rnc INT REFERENCES rnc(id),
+    descricao TEXT,
+    data_execucao DATE,
+    responsavel VARCHAR(100)
+);
